@@ -1,0 +1,783 @@
+@import 'partials/mixins';
+@import 'partials/variables';
+@import 'partials/media-query';
+
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+body {
+	font-family: 'Lato', sans-serif;
+}
+/* =====================
+Common style
+===================== */
+a {
+
+	@include transition(color 0.3s ease);
+} 
+
+a:hover, a:focus, a:active {
+	text-decoration: none;
+	
+}
+.bg-sand {
+	background-color: $sand;
+}
+/* =====================
+Landing Header style
+===================== */
+
+.header {
+	background-color: transparent;
+	position: absolute;
+	width: 100%;
+	z-index: 555;
+	padding: 0 30px;
+}
+.main-nav {
+	&.navbar-sticky {
+		display: none;
+	}
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	@include tablet {
+		padding: 0!important;
+	}
+	.navbar-brand {
+		padding: 0px;
+		max-width: 150px;
+		overflow: hidden;
+		@include tablet {
+			max-width: 230px;
+		}
+		@include large-desktops {
+			max-width: 280px;
+			overflow: visible;
+		}
+		img {
+			width: 100%;
+			@include desktops {
+				width: auto;
+			}
+		}
+	}
+	.navbar-toggler {
+		-webkit-align-self: flex-start;
+		-ms-flex-item-align: start;
+		align-self: flex-start;
+		padding: 0;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		border-radius:0px;
+		position: absolute;
+		right: 15px;
+		top: 20px;
+		margin-top: 0px;
+		.burger-menu {
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			font-size: 18px;
+			line-height: 40px;
+			color: $white-color;
+			background: $primary-color;
+			text-align: center;
+			border-radius: 50%;
+		}
+		&.active, &:focus {
+			outline: none;
+		}
+	}
+	.navbar-collapse {
+		padding: 0;
+		border-top: none;
+		max-height: 340px;
+		margin-top: 10px;
+		@include tablet {
+			margin-top: 0px;
+		}
+	}
+	.collapse.show {
+		overflow-y: auto;
+	}
+	.navbar-nav {
+		position: relative;
+		z-index: 555;
+		background: rgba(60, 60, 60, 1);
+		@include clearfix;
+		@include tablet {
+			position: static;
+			background: transparent;
+		}
+	}
+	.nav-item {
+		a {
+			text-transform: capitalize;
+		}
+		&.dropdown {
+			> a {
+				&:hover,&:focus {
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+		a.nav-link {
+			color: $white-color;
+			padding: 0px;
+			font-size: 14px;
+			position: relative;
+			text-transform: uppercase;
+			font-weight: 700;
+			display: block;
+			margin: 10px 15px;
+			@include tablet {
+				color: $white-color;
+				padding: 40px 6px;
+				margin: 0px;
+				font-size: 13px;
+			}
+			@include desktops {
+				padding: 40px 20px;
+				margin: 0px;
+				font-size: 14px;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				top: 40px;
+				left: 0;
+				opacity: 0;
+				@include transition(opacity 0.3s ease-in-out);
+				@include tablet {
+					top: 70px;
+					border-bottom: 2px solid $white-color;
+				}
+			}
+			&:hover,&:focus {
+				&:before {
+					opacity: 1;
+				}
+			}
+		}
+		&.dropdown {
+			> a.nav-link {
+				&:after {
+					position: absolute;
+					border: none;
+					top: 5px;
+					opacity: 1;
+					content: "\f107";
+					display: inline-block;
+					font: normal normal normal 14px/1 FontAwesome;
+					font-size: inherit;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					right: 8px;
+					@include tablet {
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+}
+.show {
+	> a.nav-link {
+		color: $white-color;
+		&:hover, &:focus {
+			color: $white-color;
+		}
+	}
+	> a:after {
+		content: "\f106";
+	}
+	>.dropdown-menu {
+		@include transition(transform 0.3s, opacity 0.3s ease-in-out);
+		@include transform(scale(1, 1));
+		opacity: 1;  
+	}
+}
+.dropdown-menu {
+	top: 100%;
+	min-width: 230px;
+	margin-top: 0px;
+	width: auto;
+	padding: 0px 30px 10px;
+	border-radius: 0px;
+	background-color: rgba(255,255,255,0.1);
+	a {
+		padding: 10px 0;
+		display: block;
+		color: $white-color;
+		@include tablet {
+			color: $text-color;
+			&:hover {
+				color: $title-color;
+			}
+		}
+	}
+	@include tablet {
+		-webkit-transform-origin: top;
+		transform-origin: top;
+		-webkit-animation-fill-mode: forwards;  
+		animation-fill-mode: forwards; 
+		@include transform(scale(1, 0));
+		background-color: $white-color;
+		margin-top: -25px;
+		padding: 20px;
+		display: block;
+		opacity: 0;
+		@include transition(transform 0.3s, opacity 0.3s ease-in-out);
+	}
+	@include desktops {
+		margin-top: -20px;
+		padding: 20px 30px;
+	}
+	@include box-shadow(0px, 0px, 3px, rgba(0,0,0,0.08));
+	li {
+		padding: 0;
+		border-bottom: 1px solid $border-color;
+		&:last-child {
+			border-bottom: 0px;
+		}
+	}
+	li.dropdown {
+		> a:after {
+			position: absolute;
+			border: none;
+			top: 14px;
+			right: 10px;
+			opacity: 1;
+			content: "\f107";
+			display: inline-block;
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			@include tablet {
+				content: "\f105";
+			}
+		}
+		&.show {
+			> a:after {
+				content: "\f106";
+				@include tablet {
+					content: "\f104";
+				}
+
+			}
+			>.dropdown-menu {
+				@include transition(transform 0.3s, opacity 0.3s ease-in-out);
+				@include transform(scale(1, 1));
+				opacity: 1;
+				display: block;
+			}
+		}
+	}
+}
+@include tablet {
+	.megaDropMenu {
+		position: static!important;
+		.dropdown-menu {
+			width: 100%;
+			top: 100%;
+			padding: 0 10px!important;
+			> li {
+				float: left;
+				padding: 20px!important;
+				border-bottom: 0px;
+			}
+			ul {
+				li {
+					border-bottom: 1px solid $border-color;
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	}
+}
+.option-switcher-btn {
+	display: none;
+}
+.btn-purchase2 {
+	background-color: $primary-color;
+	max-width: 246px;
+	margin: 25px auto;
+	border-radius: 0;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	display: block;
+	padding: 0px 30px;
+	color: $white-color;
+	text-transform: uppercase;
+	height: 50px;
+	line-height: 50px;
+	text-transform: uppercase!important;
+	&:hover, &:focus {
+		color: $white-color;
+	}
+	@include tablet {
+		display: inline-block;
+		font-size: 13px;
+		padding: 0 20px;
+		margin-left: 20px;
+	}
+	@include desktops {
+		font-size: 14px;
+		padding: 0px 30px;
+		margin-left: 25px;
+	}
+}
+
+h2.section-title {
+	font-family: 'Playfair Display', serif;
+	font-size: 34px;
+	line-height: 44px;
+	padding-bottom: 10px;
+	margin: 0px;
+}
+/* =====================
+Landing Banner style
+===================== */
+.landing-banner {
+	background-position: center;
+	background-size: cover;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	position: relative;
+	height: 450px;
+	@include tablet {
+		height: 706px;
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	.banner-content {
+		h1 {
+			font-family: 'Playfair Display', serif;
+			color: $white-color;
+			font-size: 30px;
+			font-weight: 700;
+			margin-top: 50px;
+			margin-bottom: 25px;
+			line-height: 40px;
+			@include tablet {
+				font-size: 36px;
+				margin-top: 80px;
+				margin-bottom: 25px;
+				line-height: 40px;
+			}
+			@include desktops {
+				font-size: 58px;
+				margin-top: 100px;
+				line-height: 55px;
+			}
+		}
+		p {
+			color: $white-color;
+			font-size: 18px;
+			line-height: 24px;
+			padding: 0 5px;
+			@include tablet {
+				font-size: 21px;
+				line-height: 30px;
+				padding: 0 70px;
+			}
+		}
+	}
+}
+/* =====================
+Preview Area style
+===================== */
+.preview-area {
+	padding-bottom: 80px;
+	position: relative;
+	@include desktops {
+	   padding-bottom: 100px;
+	}
+	.home-preview {
+		margin-top: 30px;
+		overflow: hidden;
+		height: 300px;
+		background-position: top center;
+		background-size: cover;
+		@include box-shadow(0px, 2px, 20px, rgba(0, 0, 0, 0.2));
+		@include transition(background-position 3s ease-in-out);
+		@include tablet {
+			height: 491px;
+			margin-top: -245px;
+		}
+		&:hover {
+			background-position: 50% 100%;
+		}
+	}
+}
+.page-title {
+	color: #545454;
+	position: relative;
+	display: inline-block;
+	font-size: 15px;
+	margin-top: 25px;
+	margin-bottom: 0px;
+	text-transform: uppercase;
+	&:after {
+		content: '';
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: block;
+		margin: 0 auto;
+		width: 0;
+		height: 2px;
+		background-color: #222222;
+		@include transition(all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.075));
+	}
+}
+/* Pages Preview area style */
+.page-preview-area {
+	background-color: $sand;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+	   padding-top: 100px;
+	   padding-bottom: 100px;
+	}
+	.page-preview-holder {
+		margin-top: 40px;
+		position: relative;
+		overflow: hidden;
+		img {
+			width: 100%;
+			@include transform(translateY(0));
+			@include box-shadow(0px, 2px, 20px, rgba(0, 0, 0, 0.2));
+			@include transition(transform 0.3s ease-in);
+		}
+		&:hover {
+			img {
+				@include transform(translateY(-5px));
+			}
+		}
+	}
+}
+.page-preview-holder {
+	display: block;
+	text-align: center;
+	&:hover {
+		.page-title {
+			&:after {
+			  width: 100%;
+			}
+		}
+	}
+}
+/* =====================
+Landing Key feature style
+===================== */
+.key-features {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+	   padding-top: 100px;
+	   padding-bottom: 100px;
+	}
+}
+.single-feature {
+	margin-top: 40px;
+	.media-img {
+		width: 80px;
+		float: left;
+		text-align: center;
+		overflow: hidden;
+		img {
+			max-width: 100%;
+		}
+	}
+	.media-body {
+		padding-left: 20px;
+		h5 {
+			font-size: 22px;
+			margin-bottom: 15px;
+			line-height: 22px
+		}
+		p {
+			color: $text-color;
+			font-size: 15px;
+		}
+	}
+} 
+/* =====================
+Landing Page Layouts
+===================== */
+.layouts {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+	   padding-top: 100px;
+	   padding-bottom: 100px;
+	}
+}
+.layout-holder {
+	position: relative;
+	display: block;
+	padding: 20px 0;
+	overflow: hidden;
+	@include desktops {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	img {
+		width: 100%;
+	}
+	p {
+		margin-top: 15px;
+		margin-bottom: 20px;
+		color: #909090;
+		@include tablet {
+			margin-bottom: 0px;
+		}
+	}
+}
+/* =====================
+Rating and Review
+===================== */
+.reviews {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+	   padding-top: 100px;
+	   padding-bottom: 100px;
+	}
+}
+.single-review {
+	padding: 50px 80px;
+	@include box-shadow(0px, 3px, 12px, rgba(0, 0, 0, 0.08)); 
+	margin-top: 45px;
+	ul {
+	  margin: 0;
+	  padding: 0;
+	  li {
+		margin-bottom: 25px;
+		i {
+			color: #ffc400;
+		}
+	  }
+	}
+	p {
+		position: relative;
+		font-size: 17px;
+		line-height: 30px;
+		color: $text-color;
+		margin-bottom: 30px;
+		&:before {
+			position: absolute;
+			content: "\f10d";
+			top: 50%;
+			@include transform(translateY(-50%));
+			left: -50px;
+			font-family: "FontAwesome";
+			font-size: 60px;
+			opacity: 0.2;
+		}
+	}
+}
+
+/* =====================
+Landing CTA style
+===================== */
+.landing-cta {
+	background-position: center;
+	background-size: cover;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(41,45,58,0.9);
+	}
+	@include desktops {
+	   padding-top: 100px;
+	   padding-bottom: 100px;
+	}
+	.cta-purchase {
+		position: relative;
+		z-index: 55;
+		h1 {
+			font-family: 'Playfair Display', serif;
+			font-size: 30px;
+			line-height: 36px;
+			margin-bottom: 25px;
+			color: $white-color;
+			@include tablet {
+				font-size: 36px;
+				line-height: 44px;
+				margin-bottom: 30px;
+			}
+			@include desktops {
+				font-size: 50px;
+				line-height: 44px;
+				margin-bottom: 50px;
+			}
+		}
+		p {
+			color: $white-color;
+			font-size: 18px;
+			line-height: 24px;
+			padding: 0 5px;
+			@include tablet {
+				font-size: 20px;
+				line-height: 26px;
+				padding-bottom: 45px;
+			}
+		}
+		a.btn-purchase2 {
+			font-weight: 700;
+			margin: 0 auto;
+		}
+	}
+}
+footer.footer-landing {
+	background-color: $sand;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	.copyRight_text {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		p {
+			margin: 0px;
+			a:hover {
+				color: $primary-color!important;
+			}
+		}
+	}
+}
+
+// Page Preloader
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  z-index: 1001;
+  
+  &:before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #e74c3c;
+	-webkit-animation: spin 3s linear infinite;
+	animation: spin 3s linear infinite;
+  }
+  &:after {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #f9c922;
+	-webkit-animation: spin 1.5s linear infinite;
+	animation: spin 1.5s linear infinite;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+	@include transform(rotate(0deg));
+  }
+
+  100% {
+	@include transform(rotate(360deg));
+  }
+}
+
+
+@keyframes spin {
+  0% {
+	@include transform(rotate(0deg));
+  }
+
+  100% {
+	@include transform(rotate(360deg));
+  }
+}
+
+
+#loader-wrapper .loader-section {
+  position: fixed;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  background: $dark-navy;
+  z-index: 1000;
+  &.section-left {
+	left: 0;
+  }
+  &.section-right {
+	right: 0;
+  }
+}
+
+/* Loaded styles */
+
+.loaded {
+	#loader-wrapper .loader-section {
+		&.section-left {
+			@include transform(translateX(-100%));
+			@include transition(all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1));
+		}
+		&.section-right {
+			@include transition(all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1));
+			@include transform(translateX(100%));
+		}
+	}
+	#loader {
+		opacity: 0;
+		@include transition(all 0.3s ease-out);
+	}
+	#loader-wrapper {
+		visibility: hidden;
+		@include transform(translateY(-100%));
+		@include transition(all 0.3s 1s ease-out);
+	}
+}

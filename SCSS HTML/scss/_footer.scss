@@ -1,0 +1,169 @@
+footer{
+  background-color: $sand;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  @include desktops {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+} 
+
+/*=== 4.2 FOOTER TOP ===*/
+.newsletter {
+  margin-bottom: 40px;
+   padding-top: 120px;
+  @include tablet {
+    padding-top: 140px;
+  }
+  h3 {
+    line-height: 32px;
+    margin-bottom: 40px;
+    @include tablet {
+      font-size: 25px;
+      text-transform: capitalize;
+      line-height: 32px;
+      margin-bottom: 40px;
+    }
+  }
+  input {
+    border: 1px solid transparent;
+    padding: 0px 15px;
+    font-size: 15px;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    @include transition(all 0.3s ease-in-out);
+    margin: 0px auto 20px;    
+    @include clearfix;
+    
+
+    @include tablet {
+      width: 340px;
+      float: unset;
+      margin: 0px auto 20px;
+      &.focus, &:focus, &.active, &:active, &:hover {
+        // @include box-shadow(0px, 12px, 25px, rgba(0, 0, 0, 0.08));
+        border: 1px solid $primary-color;
+      }
+    }
+    @include large-desktops {
+      width: 340px;
+      float: left;
+      margin: 0;
+      margin-right: 15px;
+    }
+
+  }
+
+  .btn {
+    font-size: 14px;
+    font-weight: 700;
+    @include large-desktops {
+      
+    }
+  }
+  @include placeholder {
+    color: $text-color;
+  }
+}
+/*=== 4.2 SOCIAL ICONS ===*/
+footer {
+  .socialLink {
+    padding: 40px 0 0;  
+  }
+  .copyRight_text {
+    padding-top: 20px;
+  }
+}
+/*======== Footer Dark version ========*/
+
+.footer-dark {
+  background-color: #1f282e;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  .newsletter {
+    padding: 55px 0 0;
+    position: relative;
+    margin-bottom: 0px;
+    h3 {
+      font-size: 30px;
+      color: $white-color;
+      font-weight: 700;
+    }
+    form {
+      position: relative;
+      padding-bottom: 56px;
+    }
+    input {
+      background-color: transparent;
+      color: $white-color;
+      float: unset;
+      border: 1px solid $white-color;
+      &:hover,&:active,&:focus {
+        border-color: $white-color!important;
+      }
+    }
+    .btn {
+      color: $title-color;
+      float: unset;
+      padding: 0 40px;
+    }
+    @include placeholder {
+      color: $white-color;
+    }
+  }
+  .contact {
+    a{
+      img.footer-logo {
+        margin-bottom: 20px;
+        @include tablet {
+          margin-bottom: 40px;
+        }
+      }
+    }
+    h3 {
+      color: $white-color;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      @include tablet {
+        margin-top: 15px;
+        margin-bottom: 35px;
+      }
+    }
+    p {
+      color: $white-color;
+      opacity: 0.7;
+    }
+    .socialLink a {
+      text-align: center;  
+    }
+    .f_schedule, .address {
+      li, a {
+        color: $white-color;
+        opacity: 0.7;
+      }
+    }
+  }
+  .instagram {
+    ul {
+      padding: 0 10px;
+    }
+    li {
+      width: auto;
+      overflow: hidden; 
+       padding: 10px 5px 0;    
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .copyright {
+    background-color: #182127;
+    p{
+      padding-bottom: 20px;
+      color: $white-color;
+      opacity: 0.7;
+    }
+  }
+}

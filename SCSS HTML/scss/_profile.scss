@@ -1,0 +1,120 @@
+/* ================================================
+--> Profile Single page Style
+================================================== */
+
+.profile {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+}
+.profile_img {
+	overflow: hidden;
+	img{
+		width: 100%;
+	}
+}
+.profile_details {
+	h1 {
+	    padding: 0px 0 10px;
+	}
+	> span {
+	    font-size: 15px;
+	    line-height: 26px;
+	}
+	> p {
+	    padding: 35px 0 0;
+	}
+	> ul.list-group {
+	    padding: 35px 0 0;
+	}
+	li.list-group-item {
+	    border: none;
+	    padding: 0px 0 20px;
+	}
+	li.list-inline-item a {
+	    padding-right: 10px;
+	    color: tint($text-color, 50%);
+	    &:hover {
+	    	color: $text-color;
+	    }
+	}
+	.profile_details-bio {
+		padding-top: 80px;
+		h4 {
+			padding-bottom: 15px;
+		}
+	}
+	.profile_details-skill {
+		padding-top: 80px;
+		h4 {
+			padding-bottom: 15px;
+		}
+		span {
+			font-size: 15px;
+			padding: 30px 0 10px;
+			display: block;
+			text-align: left;
+		}
+	}
+	.profile_details-education {
+		padding-top: 80px;
+		h4 {
+			padding-bottom: 0px;
+		}
+		li{
+			font-size: 15px;
+			padding-top: 25px;
+			p {
+			    display: block;
+			    padding-bottom: 10px;
+			    color: $title-color;
+			}
+		}
+	}
+	.profile_details-gallery {
+		li.work_img {
+		    display: inline-block;
+		    margin-right: 10px;
+		    overflow: hidden;
+		    text-align: center;
+		    width: 100px;
+		    span {
+		    	display: block;
+		    	margin-bottom: 15px;
+		    	@include desktops {
+		    		margin-bottom: 0px;
+		    	}
+		    }
+		    @include tablet {
+		    	margin-right: 20px;
+		    }
+		    @include desktops {
+		    	width: 120px;
+		    	margin-right: 20px;
+		    }
+		    &:last-child {
+		    	margin-right: 0px;
+		    }
+		}
+		padding-top: 80px;
+		h4 {
+			padding-bottom: 25px;
+		}
+		span {
+			font-size: 15px;
+			line-height: 26px;
+			padding-top: 10px;
+			display: inline-block;
+		}
+	}
+} 
+.profile-full {
+	.profile_details {
+		h1 {
+			padding-top: 15px;
+		}
+	}
+}

@@ -1,0 +1,288 @@
+/*=== 1.COMMON ===*/
+/* Font faces */
+
+@import url('https://fonts.googleapis.com/css?family=Rochester');
+
+.container{
+	position:relative;
+	width: 100%;
+	@include mobile {
+		width: 450px;
+	}
+	@include tablet {
+		width: 750px;
+	}
+	@include desktops {
+		width: 970px;
+	}
+	@include large-desktops {
+		width: 1140px;
+	}
+}
+
+a{
+	color: $text-color;
+	text-decoration: none;
+	@include transition(all 0.3s ease-in-out);
+	&:hover, &:focus{
+		outline: 0;
+		color: $primary-color;
+		text-decoration: none;
+	}
+}
+.main-wrapper {
+	overflow-x: hidden;
+}
+.boxed {
+	.main-nav {
+		@include tablet {
+			box-shadow: none;
+		}
+	}
+	.main-wrapper {
+		position: relative;
+		background-color: $white-color;
+		margin: 0 auto;
+		overflow-x: hidden;
+		@include mobile {
+			max-width: 520px;
+		}
+		@include tablet {
+			padding: 0px 0 0;
+			max-width: 728px;
+		}
+		@include desktops {
+			padding: 0px 0 0;
+			max-width: 970px;
+		}
+		@include large-desktops {
+			padding: 0px 0 0;
+			max-width: 1260px;
+		}
+	}
+	.home_transparent-wrapper {
+		&.main-wrapper {
+			padding-top: 0px;
+		}
+	}
+	.navbar-sticky {
+		@include mobile {
+			max-width: 520px;
+			left: 50%;
+			@include transform(translateX(-50%));
+		}
+		@include tablet {
+			padding: 25px 0 0;
+			max-width: 728px;
+		}
+		@include desktops {
+			padding: 80px 0 0;
+			max-width: 970px;
+		}
+		@include large-desktops {
+			padding: 80px 0 0;
+			max-width: 1260px;
+		}
+	}
+}
+
+.position_unset {
+	> .offset-md-1.col-md-10 {
+		position: unset;
+		> .row {
+			position: unset;
+		}
+	}
+}
+.visible {
+	display: block!important;
+}
+.form-control:focus{
+	box-shadow: none;
+}
+.btn-cta {
+	color: $title-color!important;
+	background-color: $white-color;
+}
+.section {
+	padding-top: 80px;
+	@include desktops {
+		padding-top: 100px;
+	}
+}
+
+.sectionTitle{
+	position: relative;
+	span {
+		font-family: 'Playfair Display', serif;
+		color: $primary-color;
+		text-transform: capitalize;
+		@include mobile-xs {
+			font-size: 30px;
+			line-height: 30px;
+		}
+		@include tablet {
+			font-size: 30px;
+			line-height: 30px;
+		}
+	}
+	h2{
+		line-height: 40px;
+		padding-bottom: 25px;
+		padding-top: 8px;
+		color: $title-color;
+		margin: 0;
+		@include mobile-xs {
+			font-size: 40px;
+			letter-spacing: 0px;
+		}
+		@include tablet {
+			font-size: 40px;
+			letter-spacing: 0px;
+		}
+	}
+}
+.img-full {
+	width: 100%;
+}
+.img-circle {
+	position: relative;
+	border-radius: 50%;
+}
+.bg-image-holder, .bg-image {
+	background-size: cover !important;
+	background-position: 50% 50% !important;
+	@include transition(all 0.3s linear);
+	background: $sand;
+	position: relative;
+}
+::selection {
+	background-color: $primary-color;
+	color: $white-color;
+}
+.bg-sand {
+	background-color: $sand;
+}
+.bg-primary {
+	background-color: $primary-color!important;
+}
+.bg-dark-navy {
+	background-color: $dark-navy!important;
+}
+.no-bg {
+	background-color: transparent;
+}
+.bordered {
+	border: 1px solid $border-color;
+}
+// all Margins
+.mb30 {
+	margin-bottom: 30px;
+}
+// all Padding
+.no-padding {
+	padding: 0!important;
+}
+.pv100 {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+.pt30 {
+	padding-top: 30px;
+}
+.pb30 {
+	padding-bottom: 30px;
+}
+.pb50 {
+	padding-bottom: 50px;
+}
+.pv30 {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.pt100{
+	padding-top: 100px;
+}
+.pb100 {
+	padding-bottom: 100px;
+}
+
+.bold {
+	font-weight: 700!important;
+}
+.medium {
+	font-weight: 500!important;
+}
+
+.table-inverse {
+	background-color: $dark-navy;
+}
+.sidebar {
+	padding-left: 15px;
+	margin-top: 40px;
+	@include tablet {
+		padding-left: 30px;
+		margin-top: 0px;
+	}
+	@include desktops {
+		padding-left: 40px;
+		margin-top: 0px;
+	}
+	&.sidebar-left {
+		@include tablet {
+			padding-left: 15px;
+		}
+		@include desktops {
+			padding-left: 15px;
+		}
+	}
+}
+/*============== Hover Overlays ==============*/
+.hover-overlay {
+	position: absolute;
+	content: '';
+	background-color: rgba($primary-color, 0.8);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	-webkit-perspective: 80px;
+	perspective: 80px;
+	@include transform(translateY(-100%));
+	@include transition(transform 0.3s ease);
+	a.overlay_icon {
+		width: 55px;
+		height: 55px;
+		background: #fff;
+		position: relative;
+		display: inline-block;
+		border-radius: 50%;
+		margin: 3px;
+		text-align: center;
+		i.fa {
+			font-size: 20px;
+			line-height: 50px;
+			color: $text-color;
+		}
+		// &.left {
+		//   @include transform(translateX(-200px));
+		//   @include transition(transform 0.2s ease 0.4s);
+		// }
+		// &.right {
+		//   @include transform(translateX(200px));
+		//   @include transition(transform 0.2s ease 0.4s);
+		// }
+	}
+}
+
+.highlighter {
+	background: #282C34;
+	padding: 0px 10px;
+	border-radius: 4px;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+	display: inline-block;
+}

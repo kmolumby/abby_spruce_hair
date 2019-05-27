@@ -1,0 +1,58 @@
+/* ================================================
+--> About Page style
+================================================== */
+// .boxed .pages, 
+// .pages {
+// 	padding-top: 80px;
+// 	@include desktops {
+// 		padding-top: 100px;
+// 	}
+// }
+
+.about_phylosophy {
+	padding-top: 80px;
+	border-top: 1px solid $border-color;
+	.about_phylosophy-image {
+	    width: 100%;
+	    overflow: hidden;
+	    img {
+	    	width: 100%;
+	    }
+	}
+	.about_phylosophy-desc {
+		padding: 10px;
+		h2 {
+			margin-bottom: 20px;
+		}
+		ul.list-group {
+		    padding: 15px 0 20px;
+		    li.list-group-item {
+		        border: none;
+		        padding: 0px 0px;
+		        font-size: 13px;
+		        line-height: 30px;
+		        .fa {
+		        	color: $primary-color;
+		        	font-size: 13px;
+		        }
+		    }
+		}
+	}
+}
+/* ================================================
+--> About team style
+================================================== */
+
+.team-wrapper {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include desktops {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	.sectionTitle {
+		h2 {
+			padding-bottom: 0px;
+		}
+	}
+}
